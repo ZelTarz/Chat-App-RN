@@ -1,4 +1,4 @@
-# Chap-App
+# Chap-App-RN
 
 Simple frontend mobile chat application use React Native.
 
