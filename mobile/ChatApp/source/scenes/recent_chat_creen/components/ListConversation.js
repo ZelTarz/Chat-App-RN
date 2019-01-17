@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import { List, ListItem, Text, Thumbnail, Left, Right, Body } from 'native-base';
-import ConversationService from '../../../services/ConversationServices'
+import { StyleProvider } from 'native-base';
+import { FlatList } from 'react-native'
+import ConversationItem from './ConversationItem'
+import ConversationService from '../../../services/ConversationService'
+import getTheme from '../../../native-base-theme/components';
+import customTextFont from '../../../native-base-theme/variables/customTextFont';
 
 export default class ListConversation extends Component{
     constructor(props){
@@ -44,6 +48,7 @@ export default class ListConversation extends Component{
             lastMessage = ConversationService.getLastMessageofConversation(item.conversationID);
 
             renderDataList.push({
+                conversationID: item.conversationID,
                 image: item.conversationImage,
                 title: item.conversationName,
                 message: lastMessage.message,
@@ -55,29 +60,24 @@ export default class ListConversation extends Component{
         return renderDataList;
     }
 
+    renderConversation = ({item}) =>(
+        <ConversationItem
+          conversationID = { item.conversationID }
+          image = {item.image}
+          title = {item.title}
+          message = {item.message}
+          time = {item.time}>
+        </ConversationItem>
+    );
+
     render(){
     return(
-        <List
-            dataArray={this.state.renderData}
-            renderRow={data =>
-              <ListItem avatar>
-                <Left>
-                  <Thumbnail small source={{uri: data.image}} />
-                </Left>
-                <Body>
-                  <Text>
-                    {data.title}
-                  </Text>
-                  <Text numberOfLines={1} note>
-                    {data.message}
-                  </Text>
-                </Body>
-                <Right>
-                  <Text note>
-                    {data.time}
-                  </Text>
-                </Right>
-              </ListItem>}
-        />
+        <StyleProvider style={getTheme(customTextFont)}>
+            <FlatList
+              data = { this.state.renderData }
+              renderItem = { this.renderConversation }
+              keyExtractor = {(item, index)=>index.toString()}>            
+            </FlatList>
+        </StyleProvider>
     )}
 }
