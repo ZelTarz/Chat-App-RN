@@ -20,6 +20,9 @@ export default class BadgeFooterTabs extends Component {
             contactTab: false,
             groupTab: false
         });
+
+        const {navigate} = this.props.navigation
+        navigate("RecentChat");
     };
 
     tooglecontactTab(){
@@ -28,6 +31,9 @@ export default class BadgeFooterTabs extends Component {
             contactTab: true,
             groupTab: false
         });
+
+        const {navigate} = this.props.navigation
+        navigate("Contacts");
     };
 
     tooglegroupTab(){
@@ -36,6 +42,9 @@ export default class BadgeFooterTabs extends Component {
             contactTab: false,
             groupTab: true
         });
+
+        const {navigate} = this.props.navigation
+        navigate("Groups");
     };
 
     render() {

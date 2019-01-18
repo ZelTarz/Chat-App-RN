@@ -9,7 +9,6 @@ export default class AppAndroid extends Component {
       <Root>
         <Container>
           <RecentChat></RecentChat>
-          <BadgeFooterTabs></BadgeFooterTabs>
         </Container>
       </Root>
     );
