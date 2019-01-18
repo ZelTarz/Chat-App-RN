@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Footer, FooterTab, Button, Icon, Text, Badge } from 'native-base';
+import { Keyboard } from 'react-native';
 
 export default class BadgeFooterTabs extends Component {
     constructor(props){
@@ -8,8 +9,29 @@ export default class BadgeFooterTabs extends Component {
             recentChatBadge: 0,
             contactBadge: 0,
             groupBadge: 0,
+
+            visible: true
         };
 
+    };
+
+    componentDidMount () {
+        this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow.bind(this));
+        this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide.bind(this));
+    };
+    
+
+    componentWillUnmount () {
+        this.keyboardDidShowListener.remove();
+        this.keyboardDidHideListener.remove();
+    };
+    
+    _keyboardDidShow () {
+        this.setState({ visible: false });        
+    };
+    
+    _keyboardDidHide () {
+        this.setState({ visible: true });
     };
 
     toogleRecentChatTab(){
@@ -35,6 +57,7 @@ export default class BadgeFooterTabs extends Component {
 
     render() {
     return (
+        this.state.visible && 
         <Footer>
           <FooterTab style = {{backgroundColor: 'white'}}>
             <Button 
