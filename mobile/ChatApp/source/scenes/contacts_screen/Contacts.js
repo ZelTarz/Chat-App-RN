@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Container, Text } from 'native-base'
+import { Container } from 'native-base'
+import ListContact from  './components/ListContact';
+import HeaderBar from '../global_components/HeaderBar'
 
 export default class Contacts extends Component{
     constructor(props){
@@ -9,7 +11,8 @@ export default class Contacts extends Component{
     render(){
     return(
         <Container>
-            <Text style = {{alignSelf: "center"}}> This is Contacts Screen! </Text>
+            <HeaderBar userID = "0"></HeaderBar>
+            <ListContact></ListContact>
         </Container>
     )}
 }

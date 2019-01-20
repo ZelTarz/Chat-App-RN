@@ -236,6 +236,25 @@ export const dataTest = {
         }
     ],
 
+    friend:[
+        {
+           
+            userIDRequest : 0,
+            userIDAccepet : 1,
+            friendStatus: "Accept",
+            activeStatus :"true"
+           
+
+        },
+        {
+            userIDRequest : 0,
+            userIDAccepet : 2,
+            friendStatus: "Accept",
+            activeStatus :"true"
+           
+        }
+    ],
+    
     participants: [
         {
             participantID: 0,
