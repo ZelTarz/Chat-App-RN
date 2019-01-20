@@ -29,7 +29,7 @@ const TabNavigator = createBottomTabNavigator(
     },
     {
         tabBarPosition: 'bottom',
-        swipeEnabled: false,
+        swipeEnabled: true,
         tabBarComponent: props => {
             return(
                 <BadgeFooterTab navigation = {props.navigation} ></BadgeFooterTab>
