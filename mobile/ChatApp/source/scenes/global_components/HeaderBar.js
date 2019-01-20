@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Header, Thumbnail,Item, Icon, Input } from 'native-base'
 import UserService from '../../services/UserService'
 
-export default class TopBar extends Component{
+export default class HeaderBar extends Component{
     constructor(props){
         super(props);
 

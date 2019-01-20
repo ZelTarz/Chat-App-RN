@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Footer, FooterTab, Button, Icon, Text, Badge, Container, Card, CardItem } from 'native-base';
 import { Keyboard, View } from 'react-native';
 
-export default class BadgeFooterTabs extends Component {
+export default class BadgeFooterTabBar extends Component {
     constructor(props){
         super(props);
         this.state = {
