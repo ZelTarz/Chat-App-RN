@@ -11,74 +11,44 @@ export default class ListContact extends Component{
         super(props);
         this.state = {
             friendList: [],
-            renderData: [],
         }
     };
 
     componentDidMount(){
-
         this.getFriendList(0).then(result => {
             this.setState({friendList: result});
-
-            this.getRenderData().then(result => {
-                this.setState({renderData: result})
-            });
         });
     };
 
     async getFriendList(userID){
         var conversations = ContactService.getAllContactOf(userID);
-
         return conversations;
     };
 
-    async getRenderData(){
-        
-        var renderDataList = new Array();
-
-        this.state.friendList.forEach(function(user, index, object){
-           
-            renderDataList.push({
-                userID: user.userID,
-                image: user.avatarLink,
-                title: user.displayName,
-              
-            })
-        })
-
-        console.log(renderDataList);
-        return renderDataList;
-    }
-
-    renderConversation = ({item}) =>(
+    renderFriendList = ({item}) =>(
         <ContactItem
           userID = {item.userID}
-          image = {item.image}
-          title = {item.title}
+          image = {item.avatarLink}
+          title = {item.displayName}
          >
         </ContactItem>
     );
 
     render(){
     return(
-
-        <StyleProvider style={getTheme(customTextFont)}>
-         <SafeAreaView style={styles.container}>
-            <SectionList
-                sections={[
-                    {title:'H',data:this.state.renderData}
-                ]}
-                renderItem = { this.renderConversation }       
-              
-                renderSectionHeader = {({section}) =>(
-                    <View style={styles.sectionHeader}>
-                        <Text>{section.title}</Text>
-                    </View>
-                )}      
-              keyExtractor = {(item, index)=>index.toString()}>            
-            </SectionList>
-         </SafeAreaView>
-            
+        <StyleProvider style={getTheme(customTextFont)}>            
+                <SectionList style={styles.container}
+                    sections={[
+                        {title:'H',data:this.state.friendList}
+                    ]}
+                    renderItem = { this.renderFriendList }                 
+                    renderSectionHeader = {({section}) =>(
+                        <View style={styles.sectionHeader}>
+                            <Text>{section.title}</Text>
+                        </View>
+                    )}      
+                    keyExtractor = {(item, index)=>index.toString()}>            
+                </SectionList>  
         </StyleProvider>
     )}
 }
@@ -87,10 +57,6 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         backgroundColor: '#fff',
-    },
-    row:{
-        paddingHorizontal:20,
-        paddingVertical:10,
     },
     sectionHeader:{
         backgroundColor: '#efefef',
