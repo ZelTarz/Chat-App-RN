@@ -58,7 +58,13 @@ export default class BadgeFooterTabBar extends Component {
     render() {
     return (
         this.state.visible && 
-        <View style = {{backgroundColor: "white", elevation: 15}}>
+        <View style = {{backgroundColor: "white", 
+                        elevation: 10,
+                        shadowColor: "#000",
+                        shadowOffset: {width: 0, height: 5},
+                        shadowRadius: 5,
+                        shadowOpacity: 0.75,
+                        overflow: "visible"}}>
             <Footer>
                 <FooterTab style = {{backgroundColor: 'white'}}>
                     <Button 
