@@ -1,6 +1,7 @@
 import {dataTest} from '../../DataTest'
 
 export default class ContactService{
+    
     static getAllContactOf(userID)
     {
         var yourContacts = dataTest.friend;

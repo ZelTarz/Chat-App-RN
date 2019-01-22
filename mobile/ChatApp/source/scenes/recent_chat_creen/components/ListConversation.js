@@ -15,6 +15,13 @@ export default class ListConversation extends Component{
         }
     };
 
+    shouldComponentUpdate(nextState){
+        if(this.state.renderData === nextState.renderData){
+            return false;
+        }
+        return true;
+    }
+
     componentDidMount(){
 
         this.getConversation(0).then(result => {

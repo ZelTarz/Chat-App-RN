@@ -21,10 +21,13 @@ export default class ContactItem extends Component{
 
                 <Body style = {{height: 80, alignContent: "space-between", justifyContent: "space-between"}}>
                     <Text>
-                        {this.props.title}
+                        {this.props.displayName}
+                    </Text>
+                    <Text numberOfLines={1} note>
+                        {'@' + this.props.userName}
                     </Text>
                 </Body>
-                
+
                 <Right style = {{height: 80}}>
                 </Right>
             </ListItem>
