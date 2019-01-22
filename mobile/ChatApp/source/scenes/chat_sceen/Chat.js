@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import { Container, Text, Header, Left, Button, Icon, Body, Right, Title } from 'native-base'
 
-export default class Chat extends Component{
+export default class Chat extends PureComponent{
     constructor(props){
         super(props);      
     };
 
     render(){
-    const {navigation} = this.props;
-    const title = navigation.getParam('title');
     return(
         <Container>
             <Header>
@@ -18,7 +16,7 @@ export default class Chat extends Component{
                     </Button>
                 </Left>
                 <Body>
-                    <Title>{title}</Title>
+                    <Title>{this.props.navigation.getParam('title')}</Title>
                 </Body>
                 <Right />
             </Header>

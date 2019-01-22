@@ -63,7 +63,6 @@ export default class ListConversation extends Component{
             })
         })
 
-        console.log(renderDataList);
         return renderDataList;
     };
 
