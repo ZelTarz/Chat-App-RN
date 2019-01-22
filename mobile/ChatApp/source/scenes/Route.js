@@ -1,8 +1,10 @@
-import React from 'react'
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
+import React, { Component } from 'react';
+import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation'
 import RecentChat from './recent_chat_creen/RecentChat';
 import Contacts from './contacts_screen/Contacts'
 import Groups from './groups_screen/Groups'
+import Chat from './chat_sceen/Chat'
+
 import BadgeFooterTabBar from './global_components/BadgeFooterTabBar'
 
 const TabNavigator = createBottomTabNavigator(
@@ -16,10 +18,24 @@ const TabNavigator = createBottomTabNavigator(
         swipeEnabled: true,
         tabBarComponent: props => {
             return(
-                <BadgeFooterTabBar navigation = {props.navigation} ></BadgeFooterTabBar>
+                <BadgeFooterTabBar navigation = {props.navigation}></BadgeFooterTabBar>
             );
         }
     }
 );
 
-export default Route = createAppContainer(TabNavigator);
+const TabBar = createAppContainer(TabNavigator);
+
+const Route = createStackNavigator(
+    {
+        TabBar,
+        Chat
+    },
+    {
+      headerMode: "none",
+      initialRouteName: 'TabBar'
+    }
+);
+
+
+export default createAppContainer(Route);

@@ -8,11 +8,22 @@ export default class RecentChat extends Component{
         super(props);      
     };
 
+    handleConversationClick = (conversationID, title) => {
+
+        console.warn("Conversation " + conversationID + " clicked");
+        const {navigate} = this.props.navigation;
+
+        console.log("navigate: ", navigate);
+        console.log("props: ", this.props);
+
+        navigate("Chat", {conversationID: conversationID, title: title})
+    };
+
     render(){
     return(
         <Container>
             <HeaderBar userID = "0"></HeaderBar>
-            <ListConversation></ListConversation>
+            <ListConversation handleConversationClick = {this.handleConversationClick}></ListConversation>
         </Container>
     )}
 }

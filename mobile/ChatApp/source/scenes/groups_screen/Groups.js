@@ -8,8 +8,7 @@ export default class Groups extends Component{
 
     render(){
        return(
-        
-        
+           
         <SectionList
         renderItem={({item, index, section}) => <Text key={index}>{item}</Text>}
         renderSectionHeader={({section: {title}}) => (

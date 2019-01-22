@@ -58,6 +58,10 @@ export default class ListConversation extends Component{
 
         console.log(renderDataList);
         return renderDataList;
+    };
+
+    handleConversationClick = (conversationID, title) => {
+        this.props.handleConversationClick (conversationID, title);
     }
 
     renderConversation = ({item}) =>(
@@ -66,9 +70,12 @@ export default class ListConversation extends Component{
           image = {item.image}
           title = {item.title}
           message = {item.message}
-          time = {item.time}>
+          time = {item.time}
+          handleConversationClick = {this.handleConversationClick}>
         </ConversationItem>
     );
+
+    keyExtractor = (item, index) => index.toString();
 
     render(){
     return(
@@ -76,7 +83,7 @@ export default class ListConversation extends Component{
             <FlatList
               data = { this.state.renderData }
               renderItem = { this.renderConversation }
-              keyExtractor = {(item, index)=>index.toString()}>            
+              keyExtractor = { this.keyExtractor }>            
             </FlatList>
         </StyleProvider>
     )}

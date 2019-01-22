@@ -34,21 +34,21 @@ export default class BadgeFooterTabBar extends Component {
         this.setState({ visible: true });
     };
 
-    toogleRecentChatTab(){
+    toogleRecentChatTab = () => {
 
         const {navigate} = this.props.navigation
         navigate("RecentChat");
 
     };
 
-    tooglecontactTab(){
+    tooglecontactTab = () => {
 
         const {navigate} = this.props.navigation
         navigate("Contacts");
 
     };
 
-    tooglegroupTab(){
+    tooglegroupTab = () => {
 
         const {navigate} = this.props.navigation
         navigate("Groups");
@@ -69,9 +69,8 @@ export default class BadgeFooterTabBar extends Component {
                 <FooterTab style = {{backgroundColor: 'white'}}>
                     <Button 
                     active={this.props.navigation.state.index === 0}
-                    onPress={() => this.toogleRecentChatTab()}
-                    badge 
-                    vertical>
+                    onPress={ this.toogleRecentChatTab }
+                    badge>
                         <Badge><Text>{this.state.recentChatBadge}</Text></Badge>
                         <Icon active={this.props.navigation.state.index === 0} type="MaterialIcons" name="chat" />
                         {this.props.navigation.state.index === 0 && <Text>Messages</Text>}
@@ -79,9 +78,8 @@ export default class BadgeFooterTabBar extends Component {
 
                     <Button
                     active={this.props.navigation.state.index === 1}
-                    onPress={() => this.tooglecontactTab()}
-                    badge
-                    vertical>
+                    onPress={ this.tooglecontactTab }
+                    badge>
                         <Badge ><Text>{this.state.contactBadge}</Text></Badge>
                         <Icon active={this.props.navigation.state.index === 1} type="MaterialIcons" name="contacts" />
                         {this.props.navigation.state.index === 1 && <Text>Contact</Text>}
@@ -89,9 +87,8 @@ export default class BadgeFooterTabBar extends Component {
 
                     <Button 
                     active={this.props.navigation.state.index === 2}
-                    onPress={() => this.tooglegroupTab()} 
-                    badge 
-                    vertical>
+                    onPress={ this.tooglegroupTab } 
+                    badge>
                         <Badge ><Text>{this.state.groupBadge}</Text></Badge>
                         <Icon active={this.props.navigation.state.index === 2} type="FontAwesome" name="group" />
                         {this.props.navigation.state.index === 2 && <Text>Group</Text>}

@@ -6,9 +6,7 @@ export default class AppAndroid extends Component {
   render() {
     return (
       <Root>
-        <Container>
-          <Route></Route>
-        </Container>
+        <Route></Route>
       </Root>
     );
   }

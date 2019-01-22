@@ -6,13 +6,13 @@ export default class ConversationItem extends Component{
         super(props);
     };
 
-    handleClick(conversationID){
-        console.warn("Conversation " + conversationID + " clicked");
+    handleClick = () => {
+        this.props.handleConversationClick(this.props.conversationID, this.props.title);
     };
 
     render(){
         return(
-            <ListItem avatar button onPress={ () => {this.handleClick(this.props.conversationID)}}>
+            <ListItem avatar button onPress={ this.handleClick }>
                 <Left style = {{height: 80}}>
                     <Thumbnail source={{uri: this.props.image}} />
                 </Left>
