@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { ListItem, Text, Thumbnail, Left, Right, Body, } from 'native-base';
 
-export default class ConversationItem extends Component{
+export default class ConversationItem extends PureComponent{
     constructor(props){
         super(props);
     };

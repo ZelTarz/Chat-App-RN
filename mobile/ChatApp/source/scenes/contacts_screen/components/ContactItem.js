@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import {View} from 'react-native';
 import { ListItem, Thumbnail, Left, Right, Body,Text } from 'native-base';
 
-export default class ContactItem extends Component{
+export default class ContactItem extends PureComponent{
     constructor(props){
         super(props);
     };
